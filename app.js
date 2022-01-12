@@ -495,6 +495,7 @@ class Mascota extends Familia {
 const perro1 = new Mascota('Benito', 'Arias', 'Macho', 'San Juan', 'Caniche')
 const perro2 = new Mascota('Felipe', 'Arias', 'Macho', 'San Juan', 'Caniche')
 
+let misProductos = [];
 
 class Producto {
 
@@ -504,7 +505,7 @@ class Producto {
         this.nombre = nombre
         this.precio = precio
 
-    }
+    };
 
     imprimeDatos() {
 
@@ -513,10 +514,14 @@ class Producto {
         console.log(`nombre: ${this.nombre}`);
         console.log(`precio: ${this.precio}`);
 
-    }
+    };
 
-}
+};
 
-const cocaCola = new Producto(32, 'Coca Cola', '150 pesos')
-const sprite = new Producto(55, 'Sprite', '160 pesos')
-const Fanta = new Producto(37, 'Fanta', '140 pesos')
+let cocaCola = new Producto(32, 'Coca Cola', '150 pesos');
+let sprite = new Producto(55, 'Sprite', '160 pesos');
+let fanta = new Producto(37, 'Fanta', '140 pesos');
+
+misProductos.push(cocaCola);
+misProductos.push(sprite);
+misProductos.push(fanta);
