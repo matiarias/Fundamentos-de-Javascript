@@ -256,9 +256,7 @@ let persona = {
 
         for (const key in persona) {
             console.log(`${key}: ${persona[key]}`);
-
         };
-
     },
 };
 
@@ -287,7 +285,7 @@ let movies = [
 
 const mostrarPeliculas = function () {
 
-    movies.map(function (movie) {
+    movies.map(function (movie,) {
 
         console.log(movie);
 
@@ -296,3 +294,229 @@ const mostrarPeliculas = function () {
 };
 
 
+const usuarios = [
+    {
+        id: 1,
+        name: "Leanne Graham",
+        username: "Bret",
+        email: "Sincere@april.biz",
+        address: {
+            street: "Kulas Light",
+            suite: "Apt. 556",
+            city: "Gwenborough",
+            zipcode: "92998-3874",
+            geo: {
+                lat: "-37.3159",
+                lng: "81.1496",
+            },
+        },
+        phone: "1-770-736-8031 x56442",
+        website: "hildegard.org",
+        company: {
+            name: "Romaguera-Crona",
+            catchPhrase: "Multi-layered client-server neural-net",
+            bs: "harness real-time e-markets",
+        },
+    },
+
+    {
+        id: 2,
+        name: "Ervin Howell",
+        username: "Antonette",
+        email: "Shanna@melissa.tv",
+        address: {
+            street: "Victor Plains",
+            suite: "Suite 879",
+            city: "Wisokyburgh",
+            zipcode: "90566-7771",
+            geo: {
+                lat: "-43.9509",
+                lng: "-34.4618",
+            },
+        },
+        phone: "010-692-6593 x09125",
+        website: "anastasia.net",
+        company: {
+            name: "Deckow-Crist",
+            catchPhrase: "Proactive didactic contingency",
+            bs: "synergize scalable supply-chains",
+        },
+    },
+
+    {
+        id: 3,
+        name: "Clementine Bauch",
+        username: "Samantha",
+        email: "Nathan@yesenia.net",
+        address: {
+            street: "Douglas Extension",
+            suite: "Suite 847",
+            city: "McKenziehaven",
+            zipcode: "59590-4157",
+            geo: {
+                lat: "-68.6102",
+                lng: "-47.0653",
+            },
+        },
+        phone: "1-463-123-4447",
+        website: "ramiro.info",
+        company: {
+            name: "Romaguera-Jacobson",
+            catchPhrase: "Face to face bifurcated interface",
+            bs: "e-enable strategic applications",
+        },
+    },
+
+    {
+        id: 4,
+        name: "Patricia Lebsack",
+        username: "Karianne",
+        email: "Julianne.OConner@kory.org",
+        address: {
+            street: "Hoeger Mall",
+            suite: "Apt. 692",
+            city: "South Elvis",
+            zipcode: "53919-4257",
+            geo: {
+                lat: "29.4572",
+                lng: "-164.2990",
+            },
+        },
+        phone: "493-170-9623 x156",
+        website: "kale.biz",
+        company: {
+            name: "Robel-Corkery",
+            catchPhrase: "Multi-tiered zero tolerance productivity",
+            bs: "transition cutting-edge web services",
+        },
+    },
+
+    {
+        id: 5,
+        name: "Chelsey Dietrich",
+        username: "Kamren",
+        email: "Lucio_Hettinger@annie.ca",
+        address: {
+            street: "Skiles Walks",
+            suite: "Suite 351",
+            city: "Roscoeview",
+            zipcode: "33263",
+            geo: {
+                lat: "-31.8129",
+                lng: "62.5342",
+            },
+        },
+        phone: "(254)954-1289",
+        website: "demarco.info",
+        company: {
+            name: "Keebler LLC",
+            catchPhrase: "User-centric fault-tolerant solution",
+            bs: "revolutionize end-to-end systems",
+        },
+    },
+
+];
+
+const userList = function (arreglo) {
+
+    console.log('--------------- Lista de usuarios --------------------');
+
+    arreglo.map(function (usuario) {
+
+        console.log(`Nombre: ${usuario.name}`);
+        console.log(`Username: ${usuario.username}`);
+        console.log(`Email: ${usuario.email}`);
+        console.log(`Ciudad: ${usuario.address.city}`);
+        console.log(`Cel: ${usuario.phone}`);
+        console.log(`Lugar de trabajo: ${usuario.company.name}`);
+
+        console.log('----------------------------------------------');
+
+    });
+
+    console.log(`Registros de usuarios: ${arreglo.length}`);
+
+};
+
+// userList(usuarios);
+
+const filtrarUsers = function (termino) {
+    const encontrados = usuarios.filter(function (user) {
+        return user.name.toUpperCase().includes(termino.toUpperCase());
+    });
+
+    if (encontrados.length > 0) {
+        return userList(encontrados);
+    } else {
+        console.warn("No hay resultados de la búsqueda");
+    };
+};
+
+// filtrarUsers('g');
+
+class Familia {
+
+    constructor(nombre, apellido, sexo, ciudad) {
+
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.sexo = sexo;
+        this.ciudad = ciudad;
+    }
+
+    presentacion() {
+
+        console.log('--- tarjeta de presentación ---');
+        console.log(`Hola mi nombre es ${this.nombre} ${this.apellido}`);
+        console.log(`Somos una gran familia de ${this.ciudad} criados por el mejor papá del mundo`);
+    }
+}
+
+const integrante1 = new Familia('Carlos', 'Arias', 'Masculino', 'San Juan');
+const integrante2 = new Familia('Viviana', 'Arias', 'Femenino', 'San Juan');
+const integrante3 = new Familia('Matias', 'Arias', 'Masculino', 'San Juan');
+const integrante4 = new Familia('Evelyn', 'Arias', 'Femenino', 'San Juan');
+const integrante5 = new Familia('Florencia', 'Arias', 'Femenino', 'San Juan');
+const integrante6 = new Familia('Juan Pablo', 'Arias', 'Masculino', 'San Juan');
+
+class Mascota extends Familia {
+
+    constructor(nombre, apellido, sexo, ciudad, raza,) {
+        super(nombre, apellido, sexo, ciudad)
+        this.raza = raza
+
+    };
+
+    jugar() {
+        console.log(`Hola yo soy una mascota de la flia Arias que se llama ${this.nombre}`);
+    };
+};
+
+const perro1 = new Mascota('Benito', 'Arias', 'Macho', 'San Juan', 'Caniche')
+const perro2 = new Mascota('Felipe', 'Arias', 'Macho', 'San Juan', 'Caniche')
+
+
+class Producto {
+
+    constructor(codigo, nombre, precio) {
+
+        this.codigo = codigo
+        this.nombre = nombre
+        this.precio = precio
+
+    }
+
+    imprimeDatos() {
+
+        console.log('====================');
+        console.log(`codigo: ${this.codigo}`);
+        console.log(`nombre: ${this.nombre}`);
+        console.log(`precio: ${this.precio}`);
+
+    }
+
+}
+
+const cocaCola = new Producto(32, 'Coca Cola', '150 pesos')
+const sprite = new Producto(55, 'Sprite', '160 pesos')
+const Fanta = new Producto(37, 'Fanta', '140 pesos')
