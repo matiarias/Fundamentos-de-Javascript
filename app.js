@@ -1,36 +1,3 @@
-// const persona = function (nombre, apellido, domicilio, email) {
-
-//     document.write(`Me llamo ${nombre} ${apellido}, vivo en el domicilio ${domicilio}, si deseas contactarme te dejo mi correo electrónico: ${email}. Que tengas un buen día.`);
-
-//   };
-//   persona('Matias', 'Arias', 'Brasil 470 oeste', 'matt.arias182@gmail.com');
-
-// let misProductos = [];
-
-// function agregarProducto() {
-//   let agregar = prompt('agrega tus productos a tu canasta');
-
-//   while (agregar) {
-//     misProductos.push(agregar)
-
-//     agregar = prompt('agrega tus productos a tu canasta')
-
-//   }
-
-//   console.log(misProductos);
-
-// }
-
-// let conserjes = ['matias', 'matias', 'daniela', 'macarena', 'braian']
-
-// let hotel = conserjes.map(function(conserje, index){
-//     console.log(`${index + 1} - nombre: ${conserje}`);
-// })
-
-// let busqueda = conserjes.filter(function (nombre) {
-//     return nombre === 'matias';
-
-// })
 
 /* 
 
@@ -525,3 +492,42 @@ let fanta = new Producto(37, 'Fanta', '140 pesos');
 misProductos.push(cocaCola);
 misProductos.push(sprite);
 misProductos.push(fanta);
+
+// ------------------------------------------------------------------------------------------
+
+//* ----------------------------------- BOOM -------------------------------
+
+function redireccion() {
+    //   location.replace("https://google.com");
+    location.assign("https://rollingcodeschool.com");
+}
+
+let segundero = null
+
+function iniciar() {
+
+    segundero = setInterval(function () {
+
+        let seg = new Date().getSeconds();
+        console.log(seg);
+
+    }, 1000);
+};
+
+function detener() {
+
+    clearInterval(segundero);
+
+};
+
+// setTimeout(function () {
+
+//     confirm('vas a lograr ser un programador y esforzarte sin parar siempre?')
+
+// }, 3000);
+
+// * ------------------------------------- DOM -----------------------------------------
+
+document.querySelector('h1').innerText = 'Document Objet Model';
+
+
