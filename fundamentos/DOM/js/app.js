@@ -3,9 +3,15 @@ let contenedor = document.querySelector("#root");
 let titulo = document.createElement("h1");
 titulo.innerText = "Ejercicio del DOM";
 
+let subtitulo = document.createElement("h2");
+subtitulo.innerText = "esta vez lo voy a lograr";
+
+
+
 let imagen = document.createElement("img");
 imagen.src = "https://hourofcode.com/images/hora-del-codigo-en-vivo.png";
 imagen.width = "200";
+
 
 let tabla = document.createElement("table");
 tabla.classList = "table";
@@ -97,5 +103,5 @@ const crearTarjetas = function () {
   });
 };
 
-contenedor.append(titulo, imagen, tabla);
+contenedor.append(titulo, subtitulo, imagen, tabla);
 crearTarjetas();
