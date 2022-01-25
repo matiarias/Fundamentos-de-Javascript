@@ -6,6 +6,11 @@ titulo.innerText = "Ejercicio del DOM";
 let subtitulo = document.createElement("h2");
 subtitulo.innerText = "esta vez lo voy a lograr";
 
+let miniText = document.createElement('span')
+miniText.classList = 'text_center';
+
+miniText.innerText = ' papa te extraño cada minuto, dame tiempo para hacerte sentir orgulloso'
+
 
 
 let imagen = document.createElement("img");
@@ -103,5 +108,5 @@ const crearTarjetas = function () {
   });
 };
 
-contenedor.append(titulo, subtitulo, imagen, tabla);
+contenedor.append(titulo, subtitulo, miniText, imagen, tabla);
 crearTarjetas();
