@@ -11,11 +11,19 @@ class Usuario {
 let usuarios = [];
 
 let user1 = new Usuario(
-  "Pedro",
-  "pgonzalez",
-  "pedritobueno@gmail.com",
-  "pp123456",
-  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSI3b7G544olENi0w5Nxr95EW3K3AB5a3t-mbaVh644XQIRNaRXJ2WqHAAHcJPQajU_jmo&usqp=CAU"
+  "Carlos",
+  "carlosarias",
+  "carlosarias2424@gmail.com",
+  "boca10",
+  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDUOYJFCyscTiw8XnKBScJgYtOLAVmXTlDFg&usqp=CAU"
+);
+
+let user2 = new Usuario(
+  "Matias",
+  "matiarias",
+  "matt.arias182@gmail.com",
+  "carlosarias24",
+  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-1OElMfXxTgs4_U8nxxsYMMdwxgyitr7nbw&usqp=CAU"
 );
 
 const agregarUsuario = function (user) {
@@ -23,6 +31,7 @@ const agregarUsuario = function (user) {
 };
 
 agregarUsuario(user1);
+agregarUsuario(user2);
 
 const validarDatos = function () {
   let inputEmail = document.querySelector("#input_email").value;
@@ -36,11 +45,13 @@ const validarDatos = function () {
   if (validar_email) {
     if (validar_email.password === inputPassword) {
       console.log("Usuario encontrado");
+
       let datos = {
         email: validar_email.email,
         username: validar_email.username,
         avatar: validar_email.imagen,
       };
+
       localStorage.setItem("usuario", JSON.stringify(datos));
 
       location.replace("./pages/home.html");
