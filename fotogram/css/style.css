@@ -1,3 +1,7 @@
+/* body {
+  background: linear-gradient(to left, #333, #b1102d, #ffffff);
+} */
+
 .contenedor_login {
   height: 100vh;
 
@@ -32,4 +36,12 @@
 
 .icon-like {
   font-size: 1.5rem;
+}
+
+.modal-body img {
+  width: 100%;
+}
+
+textarea {
+  resize: none;
 }

@@ -63,7 +63,24 @@ const validarDatos = function () {
   }
 };
 
+// ----------------------------------- formulario de validación -----------------------------------------
+
+let forms = document.querySelectorAll('.needs-validation')
+console.log(forms);
+
+Array.prototype.slice.call(forms).forEach(function (form) {
+
+  form.addEventListener('submit', function (event) {
+
+
+  })
+})
+
+
 document.querySelector("#formulario").addEventListener("submit", function (e) {
   e.preventDefault();
   validarDatos();
 });
+
+
+

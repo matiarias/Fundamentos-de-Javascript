@@ -1,3 +1,17 @@
+class publicacion {
+
+  constructor(id, usuario, detalle, imagen, like = 0, userLike = []) {
+
+    this.id = id
+    this.usuario = usuario
+    this.detalle = detalle
+    this.img = imagen
+    this.like = like
+    this.userLike = userLike
+
+  };
+};
+
 // let datos = [
 //   {
 //     id: 1,
@@ -43,6 +57,14 @@ let datos = JSON.parse(localStorage.getItem("posteos")) || [];
 // console.log(usuario);
 
 let contenedor_avatar = document.querySelector("#card_avatar");
+
+// Modal de bootstrap via javascript
+
+let myModal = new bootstrap.Modal(document.getElementById('nuevaPublic'), {
+  keyboard: false
+});
+
+let imgRota = true
 
 // let div = document.createElement("div");
 let estructura_avatar = `
@@ -134,51 +156,135 @@ function corazonRojo(item) {
 
 // función cuando hacemos click en el icono del corazón de me gusta
 
+//Funcion me gusta cuando hacemos clic en el corazon
+
 const meGusta = function (id) {
 
-  // traer los datos de la foto
-
-  let foto = datos.find(function (item) {
-
-    return item.id === id
-
-  });
-
-  console.log(foto);
-
-  // obtener el usuario para saber si dio like a la foto
-
-  let validarUsuario = foto.userLike.find(function (user) {
-
-    return user === usuario.username
-
-  });
-
-  // si el usuario no dio like
-
-  if (!validarUsuario) {
-
-    foto.like += 1
-    foto.userLike.push(usuario.username)
-
-  };
-
-  // obtener la posicion de la foto en el arreglo de fotos
+  //obtengo posicion de la foto en el arreglo de datos
 
   let indice = datos.findIndex(function (item) {
-
-    return item.id === id
-
+    return item.id === id;
   });
 
-  datos[indice].like = foto.like
-  datos[indice].userLike = foto.userLike
+  //chequeo que el usuario logueado no exista en el arreglo de usuarios que dieron me gusta
 
+  let validarUsuario = datos[indice].userLike.find(function (item) {
+    return item === usuario.username;
+  });
+
+  console.log(validarUsuario);
+
+  //Si el usuario no le dio Like
+
+  console.log(datos[indice].userLike.indexOf(validarUsuario));
+
+  if (!validarUsuario) {
+    datos[indice].like += 1;
+    datos[indice].userLike.push(usuario.username);
+  } else {
+    datos[indice].like -= 1;
+
+
+    //----borrar usuario del arreglo userLike-----
+
+    //buscar el indice del usuaario en el arreglo
+
+    let indiceUser = datos[indice].userLike.findIndex(function (user) {
+      return user === usuario.username;
+    });
+    //borrar el usuario con su indice
+
+    datos[indice].userLike.splice(indiceUser, 1);
+  }
+
+  //guardar cambios en localstorage y recargar tarjetas
+
+  localStorage.setItem("posteos", JSON.stringify(datos));
+
+  crearCards(datos);
+};
+
+// ----------------------------------------------------------------------------------------------
+
+// funcion para agregar imagen al modal
+
+const agregarImagen = function (e) {
+
+  let campo = document.querySelector('#text_modal').value
+
+  if (e.keyCode === 13) {
+
+    // console.log(e);
+    document.querySelector('#img_modal').src = campo
+
+    // if (imgRota) {
+
+    //   alert('La imagen no es valida')
+    //   campo.value = ''
+    //   document.querySelector('#img_modal').src = '../img/error_imagen.png'
+    //   imgRota = false
+
+    // }
+
+  }
+
+};
+
+// -------------------------- funcion para guardar la publicacion en el feed ---------------------------
+
+const guardarPublicacion = function () {
+
+  let id = new Date().getTime()
+  let user = usuario.username
+  let detalle = document.querySelector('#modal_textarea').value
+  let imagen = document.querySelector('#img_modal').src
+
+  if (detalle.length < 10) {
+
+    return alert('la descripción debe tener un minimo de 10 caracteres')
+
+  }
+
+  datos.unshift(new publicacion(id, user, detalle, imagen))
   localStorage.setItem('posteos', JSON.stringify(datos))
 
   crearCards();
+  limpiarModal();
+}
 
+//----------------------------------------- Limpiar Modal -----------------------------------------
+
+const limpiarModal = function () {
+
+  document.querySelector("#text_modal").value = "";
+  document.querySelector("#img_modal").src = "../img/error_img.png";
+
+  document.querySelector("#modal_textarea").value = "";
+  imgRota = false;
+  myModal.hide();
 };
+
+// -------------- evento para darle click al boton del modal para añadir imagenes -------------------
+
+document.querySelector('#addPublic').addEventListener('click', function () {
+
+  myModal.show()
+
+});
+
+// ------------------------------------------------------------------------------------------------
+
+document.querySelector('#text_modal').addEventListener('keydown', agregarImagen);
+
+// ------------------------------------------------------------------------------------------------
+
+document.querySelector('#img_modal').addEventListener('onerror', function () {
+
+  imgRota = true
+
+});
+
+// ------------------------------------------------------------------------------------------------
 
 crearCards();
 
@@ -189,3 +295,5 @@ crearCards();
 */
 
 // inicializarDatos(datos);
+
+
